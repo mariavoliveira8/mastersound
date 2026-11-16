@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Sound - Alta Fidelidade Sonora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/estilos-lp.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO BRANCO -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="/" class="logo">
+        <img src="/IMG/uploud/logoms.png" alt="Master Sound">
+        MASTER SOUND
+      </a>
+      <nav class="nav-links">
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#contato">Contato</a>
+        <a href="/admin" class="btn-admin">Área Administrativa</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BANNER PRINCIPAL VERDE-ÁGUA (HERO) -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Música, paixão e nostalgia em alta fidelidade sonora.</h1>
+        <p>Explore os melhores discos de vinil, edições colecionáveis, vitrolas vintage e equipamentos para amantes da música.</p>
+        <div class="hero-buttons">
+          <a href="#produtos" class="btn-white">Ver Produtos</a>
+          <a href="#contato" class="btn-outline">Fale Conosco</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="/IMG/uploud/vitrola marrom.png" alt="Vitrola e Discos de Vinil">
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO QUEM SOMOS -->
+  <section id="quem-somos" class="section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Quem Somos</h2>
+        <p>A Master Sound é especializada no resgate e na venda de discos de vinil, produções clássicas e equipamentos de som de alta qualidade. Acreditamos no ritual de ouvir música no vinil: encartes originais, qualidade sonora autêntica e a cultura musical passada entre gerações.</p>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="info-card">
+          <span class="card-tag">MISSÃO</span>
+          <p>Resgatar obras históricas e proporcionar momentos únicos de imersão musical aos nossos clientes.</p>
+        </div>
+        <div class="info-card">
+          <span class="card-tag">VISÃO</span>
+          <p>Ser a principal referência online para colecionadores e entusiastas do universo analógico e do vinil.</p>
+        </div>
+        <div class="info-card">
+          <span class="card-tag">VALORES</span>
+          <p>Autenticidade, paixão pela arte, valorização da história musical e compromisso com a satisfação do cliente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO PRODUTOS DESTACADOS -->
+  <section id="produtos" class="section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>Produtos Destacados</h2>
+        <p>Confira os últimos lançamentos e raridades disponíveis em nosso estoque.</p>
+      </div>
+
+      <div class="products-grid">
+        <% 
+          const imagensLocais = [
+            '/IMG/uploud/fleetwood.jpg',
+            '/IMG/uploud/queen.png',
+            '/IMG/uploud/caixa de som.png',
+            '/IMG/uploud/violao.png'
+          ];
+        %>
+
+        <% if (typeof produtos !== 'undefined' && produtos.length > 0) { %>
+          <% produtos.forEach(function(produto, index) { %>
+            <div class="product-card">
+              <img src="<%= imagensLocais[index] || '/IMG/uploud/vitrola marrom.png' %>" alt="<%= produto.nome %>">
+              <div class="product-body">
+                <span class="badge"><%= produto.categoria || 'Destaque' %></span>
+                <h3><%= produto.nome %></h3>
+                <p class="product-desc"><%= produto.descricao || 'Edição especial disponível em estoque.' %></p>
+                <p class="price">R$ <%= Number(produto.preco).toFixed(2).replace('.', ',') %></p>
+                <a href="#" class="btn-buy">Comprar</a>
+              </div>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <div class="product-card">
+            <img src="/IMG/uploud/fleetwood.jpg" alt="Rumours - Fleetwood Mac">
+            <div class="product-body">
+              <span class="badge">Vinil Clássico</span>
+              <h3>Rumours - Fleetwood Mac</h3>
+              <p class="product-desc">Edição remasterizada em vinil 180g com encarte original.</p>
+              <p class="price">R$ 599,00</p>
+              <a href="#" class="btn-buy">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img src="/IMG/uploud/queen.png" alt="Discos Variados">
+            <div class="product-body">
+              <span class="badge">Acervo</span>
+              <h3>Discos Variados</h3>
+              <p class="product-desc">Seleção especial de MPB, Rock Clássico e Jazz internacional.</p>
+              <p class="price">R$ 180,00</p>
+              <a href="#" class="btn-buy">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img src="/IMG/uploud/caixa de som.png" alt="Acessórios de Som">
+            <div class="product-body">
+              <span class="badge">Equipamentos</span>
+              <h3>Acessórios de Som</h3>
+              <p class="product-desc">Agulhas, kits de limpeza antiestática e caixas acústicas.</p>
+              <p class="price">R$ 250,00</p>
+              <a href="#" class="btn-buy">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img src="/IMG/uploud/violao.png" alt="Instrumentos Musicais">
+            <div class="product-body">
+              <span class="badge">Instrumentos</span>
+              <h3>Instrumentos Musicais</h3>
+              <p class="product-desc">Guitarras, baixos e amplificadores vintage revisados.</p>
+              <p class="price">R$ 1.200,00</p>
+              <a href="#" class="btn-buy">Comprar</a>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO NOSSOS DIFERENCIAIS -->
+  <section id="diferenciais" class="section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nossos Diferenciais</h2>
+        <p>Por que escolher a Master Sound para ampliar sua coleção.</p>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="info-card">
+          <h3>Qualidade Sonora</h3>
+          <p>Discos selecionados e testados para garantir a melhor fidelidade do áudio analógico.</p>
+        </div>
+        <div class="info-card">
+          <h3>Variedade de Gêneros</h3>
+          <p>Do MPB ao Rock Internacional, acervo completo para todos os perfis de colecionadores.</p>
+        </div>
+        <div class="info-card">
+          <h3>Atendimento Especializado</h3>
+          <p>Equipe apaixonada por música pronta para tirar dúvidas e sugerir os melhores álbuns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer id="contato" class="footer">
+    <div class="container footer-content">
+      <div>
+        <h3>Fale Conosco</h3>
+        <p>Possui alguma dúvida sobre nossos discos ou entregas? Entre em contato com a equipe Master Sound.</p>
+        <p class="address">📍 Rua Joaquim Caetano da Silva, 1601</p>
+      </div>
+      <div>
+        <p>© 2026 Master Sound. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

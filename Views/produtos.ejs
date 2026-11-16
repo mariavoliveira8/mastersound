@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - Master Sound</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/estilos-dashboard.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-container">
+      <div class="topbar-top">
+        <a href="/dashboard" class="brand">
+          <img src="/IMG/uploud/logoms.png" alt="Master Sound">
+          <span>MASTER SOUND</span>
+        </a>
+        <div class="user-welcome">
+          Bem-vindo, <strong>Administrador</strong>
+        </div>
+      </div>
+
+      <div class="topbar-nav">
+        <span class="panel-title">Painel Administrativo</span>
+        <nav class="nav-menu">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/produtos" class="active">Produtos</a>
+          <a href="/categorias">Categorias</a>
+          <a href="/usuarios">Usuários</a>
+          <a href="/" target="_blank">Ver Site</a>
+          <a href="/admin" class="btn-sair">Sair</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="card-box">
+      <div class="card-box-header">
+        <div>
+          <h1 style="font-size: 1.5rem; color: #0f172a;">Gerenciar Produtos</h1>
+          <p style="font-size: 0.88rem; color: #64748b;">Cadastre, edite ou remova os discos e equipamentos da loja.</p>
+        </div>
+        <a href="/produtos/novo" class="btn-novo">+ Novo Produto</a>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Produto</th>
+              <th>Modelo / Marca</th>
+              <th>Tipo</th>
+              <th>Preço</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% produtos.forEach(function(item) { %>
+              <tr>
+                <td>#<%= item.id %></td>
+                <td><strong><%= item.nome %></strong></td>
+                <td><%= item.modelo %> • <%= item.marca %></td>
+                <td><span class="badge-cat"><%= item.tipos || item.categoria_nome || 'Geral' %></span></td>
+                <td>R$ <%= Number(item.preco).toFixed(2).replace('.', ',') %></td>
+                <td style="display: flex; gap: 8px;">
+                  <a href="/produtos/editar/<%= item.id %>" style="background:#0284c7; color:#fff; padding:6px 10px; border-radius:5px; text-decoration:none; font-size:0.8rem; font-weight:600;">Editar</a>
+                  <form action="/produtos/excluir/<%= item.id %>" method="POST" onsubmit="return confirm('Deseja realmente excluir este produto?');">
+                    <button type="submit" style="background:#dc2626; color:#fff; border:none; padding:6px 10px; border-radius:5px; cursor:pointer; font-size:0.8rem; font-weight:600;">Excluir</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    © 2026 Master Sound - Sistema de Gerenciamento Administrativo
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body.login-page {
+  background-color: #0A7E66; /* Mesmo verde-água da logo e do banner */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  padding: 40px 36px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0A7E66;
+  margin-bottom: 10px;
+}
+
+.login-logo img {
+  height: 44px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.login-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 26px;
+}
+
+.form-campos {
+  margin-bottom: 16px;
+}
+
+.form-campos label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.form-campos input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-campos input::placeholder {
+  color: #94a3b8;
+}
+
+.form-campos input:focus {
+  border-color: #0A7E66;
+  box-shadow: 0 0 0 3px rgba(10, 126, 102, 0.15);
+}
+
+.btn-primario {
+  width: 100%;
+  background-color: #0A7E66;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.btn-primario:hover {
+  background-color: #065847;
+}
+
+.erro-login {
+  color: #dc2626;
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.voltar-site {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #64748b;
+  text-decoration: none;
+}
+
+.voltar-site:hover {
+  color: #0A7E66;
+}

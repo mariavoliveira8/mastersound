@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Master Sound</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/estilos-dashboard.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO DO PAINEL -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <div class="topbar-top">
+        <a href="/dashboard" class="brand">
+          <img src="/IMG/uploud/logoms.png" alt="Master Sound">
+          <span>MASTER SOUND</span>
+        </a>
+        <div class="user-welcome">
+          Bem-vindo, <strong><%= (typeof usuario !== 'undefined' && usuario) ? usuario.nome : 'Administrador' %></strong>
+        </div>
+      </div>
+
+      <div class="topbar-nav">
+        <span class="panel-title">Painel Administrativo</span>
+        <nav class="nav-menu">
+          <a href="/dashboard" class="active">Dashboard</a>
+          <a href="/produtos">Produtos</a>
+          <a href="/categorias">Categorias</a>
+          <a href="/usuarios">Usuários</a>
+          <a href="/" target="_blank">Ver Site</a>
+          <a href="/admin" class="btn-sair">Sair</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p>Visão geral do catálogo, estoque e usuários do sistema Master Sound.</p>
+    </div>
+
+    <!-- INDICADORES GERAIS -->
+    <h2 class="section-title">Indicadores Gerais</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Produtos Cadastrados</div>
+        <div class="kpi-value"><%= typeof totalProdutos !== 'undefined' ? totalProdutos : 0 %></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Categorias</div>
+        <div class="kpi-value"><%= typeof totalCategorias !== 'undefined' ? totalCategorias : 0 %></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pedidos no Mês</div>
+        <div class="kpi-value">12</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Usuários Ativos</div>
+        <div class="kpi-value"><%= typeof totalUsuarios !== 'undefined' ? totalUsuarios : 1 %></div>
+      </div>
+    </div>
+
+    <!-- TABELA DE PRODUTOS -->
+    <div class="card-box">
+      <div class="card-box-header">
+        <h2 class="section-title" style="margin-bottom: 0;">Produtos em Destaque no Catálogo</h2>
+        <a href="/produtos" class="btn-novo">Gerenciar Produtos</a>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (typeof produtos !== 'undefined' && produtos.length > 0) { %>
+              <% produtos.forEach(function(item) { %>
+                <tr>
+                  <td><strong><%= item.nome %></strong></td>
+                  <td><span class="badge-cat"><%= item.tipos || 'Vinil' %></span></td>
+                  <td>R$ <%= Number(item.preco).toFixed(2).replace('.', ',') %></td>
+                  <td>Disponível</td>
+                </tr>
+              <% }); %>
+            <% } else { %>
+              <tr>
+                <td><strong>Rumours - Fleetwood Mac</strong></td>
+                <td><span class="badge-cat">Vinil Clássico</span></td>
+                <td>R$ 599,00</td>
+                <td>Disponível</td>
+              </tr>
+              <tr>
+                <td><strong>Discos Variados</strong></td>
+                <td><span class="badge-cat">Acervo</span></td>
+                <td>R$ 180,00</td>
+                <td>Disponível</td>
+              </tr>
+              <tr>
+                <td><strong>Acessórios de Som</strong></td>
+                <td><span class="badge-cat">Equipamentos</span></td>
+                <td>R$ 250,00</td>
+                <td>Disponível</td>
+              </tr>
+              <tr>
+                <td><strong>Instrumentos Musicais</strong></td>
+                <td><span class="badge-cat">Instrumentos</span></td>
+                <td>R$ 1.200,00</td>
+                <td>Disponível</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RESUMO DO SISTEMA -->
+    <h2 class="section-title">Resumo do Sistema</h2>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>Mais Procurados</h3>
+        <ul class="summary-list">
+          <li><span>1. Rumours - Fleetwood Mac</span> <strong>8 vendas</strong></li>
+          <li><span>2. Queen - Greatest Hits</span> <strong>6 vendas</strong></li>
+          <li><span>3. Vitrola Vintage Marrom</span> <strong>4 vendas</strong></li>
+          <li><span>4. Caixa de Som Acústica</span> <strong>3 vendas</strong></li>
+        </ul>
+      </div>
+
+      <div class="summary-card">
+        <h3>Pedidos por Status</h3>
+        <ul class="summary-list">
+          <li><span>Confirmados</span> <strong>9</strong></li>
+          <li><span>Pendentes</span> <strong>2</strong></li>
+          <li><span>Cancelados</span> <strong>1</strong></li>
+        </ul>
+      </div>
+
+      <div class="summary-card">
+        <h3>Produtos por Categoria</h3>
+        <ul class="summary-list">
+          <li><span>Vinil Clássico</span> <strong>6</strong></li>
+          <li><span>MPB & Nacional</span> <strong>4</strong></li>
+          <li><span>Equipamentos</span> <strong>3</strong></li>
+          <li><span>Instrumentos</span> <strong>2</strong></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    © 2026 Master Sound - Sistema de Gerenciamento Administrativo
+  </footer>
+
+</body>
+</html>

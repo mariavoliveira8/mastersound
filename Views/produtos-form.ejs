@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= produto ? 'Editar Produto' : 'Novo Produto' %> - Master Sound</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/estilos-dashboard.css">
+  <style>
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: #1e293b; }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #0A7E66; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-container">
+      <div class="topbar-top">
+        <a href="/dashboard" class="brand">
+          <img src="/IMG/uploud/logoms.png" alt="Master Sound">
+          <span>MASTER SOUND</span>
+        </a>
+        <div class="user-welcome">Bem-vindo, <strong>Administrador</strong></div>
+      </div>
+      <div class="topbar-nav">
+        <span class="panel-title">Painel Administrativo</span>
+        <nav class="nav-menu">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/produtos" class="active">Produtos</a>
+          <a href="/categorias">Categorias</a>
+          <a href="/usuarios">Usuários</a>
+          <a href="/" target="_blank">Ver Site</a>
+          <a href="/admin" class="btn-sair">Sair</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="card-box" style="max-width: 760px; margin: 0 auto;">
+      <div class="card-box-header">
+        <h1 style="font-size: 1.4rem; color: #0f172a;"><%= produto ? 'Editar Produto' : 'Cadastrar Novo Produto' %></h1>
+        <a href="/produtos" style="color: #64748b; text-decoration: none; font-size: 0.88rem;">← Voltar</a>
+      </div>
+
+      <form action="<%= produto ? '/produtos/editar/' + produto.id : '/produtos/novo' %>" method="POST">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome" value="<%= produto ? produto.nome : '' %>" required>
+          </div>
+
+          <div class="form-group">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" placeholder="Ex: LP Vinyl, Vitrola" value="<%= produto ? produto.modelo : '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" placeholder="Ex: Master Sound, Importado" value="<%= produto ? produto.marca : '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="preco">Preço (R$):</label>
+            <input type="number" step="0.01" id="preco" name="preco" value="<%= produto ? produto.preco : '' %>" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tipos">Tipo:</label>
+            <input type="text" id="tipos" name="tipos" placeholder="Ex: Internacional, Nacional, Acessório" value="<%= produto ? produto.tipos : '' %>">
+          </div>
+
+          <div class="form-group full">
+            <label for="imagem">Caminho da Imagem (ex: IMG/uploud/violao.png):</label>
+            <input type="text" id="imagem" name="imagem" value="<%= produto ? produto.imagem : 'IMG/uploud/' %>">
+          </div>
+
+          <div class="form-group full">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="3"><%= produto ? produto.descricao : '' %></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-novo" style="border:none; cursor:pointer; width:100%; padding:12px; font-size:0.95rem; margin-top:8px;">
+          <%= produto ? 'Salvar Alterações' : 'Cadastrar Produto' %>
+        </button>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

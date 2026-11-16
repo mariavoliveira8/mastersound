@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Sound - Área Administrativa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/estilos-adm.css">
+</head>
+<body class="login-page">
+    <main class="login-card">
+        <div class="login-logo">
+            <img src="/IMG/uploud/logoms.png" alt="Master Sound">
+            <span>MASTER SOUND</span>
+        </div>
+        <p class="login-subtitle">Informe seus dados para acessar o sistema.</p>
+
+        <form action="/login" method="POST">
+            <div class="form-campos">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="Digite o seu email" required>
+            </div>
+            <div class="form-campos">
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Digite a sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-primario">Entrar</button>
+        </form>
+
+        <% if (typeof erro !== 'undefined' && erro != null) { %>
+            <p class="erro-login"><%= erro %></p>
+        <% } %>
+
+        <a href="/" class="voltar-site">← Voltar para o site</a>
+    </main>
+</body>
+</html>
